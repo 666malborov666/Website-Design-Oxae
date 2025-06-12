@@ -1,7 +1,6 @@
-# Website|Design|Oxae.com
+# Websit Design Oxae.com
 Визитка
 
-<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
