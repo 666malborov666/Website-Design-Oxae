@@ -1,2 +1,440 @@
 # Website-Design-Oxae
 Визитка
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OXAE DESIGN - Визитка</title>
+  <style>
+    /* Modern Google Font Import */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff8e1 0%, #ffd54f 90%);
+      color: #5d4037;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      background: #ffb300;
+      box-shadow: 0 4px 12px rgba(255, 183, 0, 0.4);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+
+    header h1 {
+      font-weight: 800;
+      font-size: 2rem;
+      color: #3e2723;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #3e2723;
+      position: relative;
+      padding: 0.35rem 0.5rem;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 3px;
+      width: 0%;
+      background: #e65100;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #e65100;
+      outline: none;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    section {
+      background: rgba(255 193 7 / 0.15);
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 6px rgb(255 193 7 / 0.15),
+        0 1px 3px rgb(255 193 7 / 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    section:focus-within, section:hover {
+      box-shadow:
+        0 8px 15px rgb(230 81 0 / 0.4),
+        0 2px 8px rgb(230 81 0 / 0.3);
+      outline: none;
+    }
+
+    section h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #bf360c;
+      text-align: center;
+      user-select: none;
+      text-shadow: 1px 1px 1px rgba(255 193 7 / 0.4);
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #4e342e;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Portfolio placeholders */
+    #portfolio p {
+      font-style: italic;
+      font-weight: 500;
+      color: #6d4c41;
+    }
+
+    /* Contact placeholders */
+    #contact p {
+      font-weight: 600;
+    }
+
+    /* Order section */
+    #order {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animated-button {
+      background: linear-gradient(135deg, #ffb300, #e65100);
+      color: white;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.3s ease,
+                  filter 0.3s ease;
+      box-shadow: 0 4px 6px rgb(230 81 0 / 0.6);
+      user-select: none;
+    }
+
+    .animated-button:hover,
+    .animated-button:focus {
+      outline: none;
+      transform: scale(1.07);
+      box-shadow:
+        0 0 12px 2px #ff6f00,
+        0 6px 10px rgb(230 81 0 / 0.8);
+      filter: brightness(1.1);
+    }
+
+    .animated-button:active {
+      transform: scale(0.96);
+      box-shadow: 0 2px 5px rgb(230 81 0 / 0.5);
+      filter: brightness(0.9);
+    }
+
+    /* Price list styling */
+    #price p {
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: #ffb300;
+      color: #4e342e;
+      text-align: center;
+      padding: 1rem 1rem;
+      font-weight: 600;
+      box-shadow: inset 0 1px 4px rgb(230 81 0 / 0.4);
+      user-select: none;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 640px) {
+      nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      main {
+        margin: 1rem 1rem 2.5rem;
+        padding: 0;
+      }
+
+      section {
+        padding: 1.5rem 1.5rem;
+      }
+
+      .animated-button {
+        width: 100%;
+        font-size: 1.1rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>OXAE DESIGN</h1>
+    <nav aria-label="Главное меню">
+      <ul>
+        <li><a href="#about" tabindex="0">Обо мне</a></li>
+        <li><a href="#portfolio" tabindex="0">Портфолио</a></li>
+        <li><a href="#contact" tabindex="0">Связь со мной</a></li>
+        <li><a href="#order" tabindex="0">Заказать</a></li>
+        <li><a href="#price" tabindex="0">Прайс лист</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" tabindex="-1" aria-label="Обо мне раздел">
+      <h2>Обо мне</h2>
+      <p>Я профессионал в монтаже видео и графическом дизайне. Моя цель – воплотить ваши идеи в качественном и ярком визуальном формате с душой и стилем.</p>
+    </section>
+
+    <section id="portfolio" tabindex="-1" aria-label="Портфолио раздел">
+      <h2>Портфолио</h2>
+      <p>Здесь будет размещено ваше портфолио с лучшими примерами моей работы: видеомонтаж, дизайн логотипов, баннеров и многое другое.</p>
+    </section>
+
+    <section id="contact" tabindex="-1" aria-label="Связь со мной раздел">
+      <h2>Связь со мной</h2>
+      <p>Свяжитесь со мной по телефону, email или через социальные сети для консультации и обсуждения вашего проекта.</p>
+    </section>
+
+    <section id="order" tabindex="-1" aria-label="Заказать раздел">
+      <h2>Заказать</h2>
+      <button class="animated-button" id="orderButton" aria-label="Заказать услугу">Заказать услугу</button>
+    </section>
+
+    <section id="price" tabindex="-1" aria-label="Прайс лист раздел">
+      <h2>Прайс лист</h2>
+      <p>Монтаж видео – от 1500₽/минуту<br/>Графический дизайн логотипа – от 3000₽<br/>Дизайн баннера – от 1000₽</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Все права защищены</p>
+  </footer>
+
+  <!-- Modal for Order Form -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Форма заказа</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nickname">Никнейм:</label>
+          <input type="text" id="nickname" placeholder="Введите ваш никнейм" />
+        </div>
+        <div class="form-group">
+          <label for="telegram">Юз Telegram:</label>
+          <input type="text" id="telegram" placeholder="Введите ваш Telegram" />
+        </div>
+        <div class="form-group">
+          <label for="orderType">Тип заказа:</label>
+          <input type="text" id="orderType" placeholder="Введите тип заказа" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Номер телефона:</label>
+          <input type="text" id="phone" placeholder="Введите ваш номер" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" placeholder="Введите ваш email" />
+        </div>
+      </div>
+      <button class="animated-button" id="submitOrder">Отправить заказ</button>
+    </div>
+  </div>
+
+  <!-- Modal for Contact Info -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Связь со мной</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <p>Моя почта: <strong>romanmalborov@gmail.com</strong></p>
+        <p>Резерв почта: <strong>neksogenov.store.design@gmail.com</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll navigation is handled by 'scroll-behavior: smooth' in CSS.
+    // Enhance button functionality with animation and interaction:
+    const orderButton = document.getElementById('orderButton');
+    const orderModal = document.getElementById('orderModal');
+    const contactModal = document.getElementById('contactModal');
+    const closeButtons = document.querySelectorAll('.close');
+
+    orderButton.addEventListener('click', () => {
+      orderModal.style.display = "flex";
+    });
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        orderModal.style.display = "none";
+        contactModal.style.display = "none";
+      });
+    });
+
+    // Show contact modal
+    document.querySelector('nav a[href="#contact"]').addEventListener('click', (e) => {
+      e.preventDefault();
+      contactModal.style.display = "flex";
+    });
+
+    // Submit order button
+    document.getElementById('submitOrder').addEventListener('click', () => {
+      alert("Ваш заказ отправлен!");
+      orderModal.style.display = "none";
+    });
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      if (event.target === orderModal || event.target === contactModal) {
+        orderModal.style.display = "none";
+        contactModal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
